@@ -1,0 +1,3 @@
+# ncurses has no upstream patch available in debian repository yet.
+# Low risk in a headless, non-root API container.
+CVE-2025-69720

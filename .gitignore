@@ -1,0 +1,15 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+*.tar
+*.deb
+install_docker.sh
+install_minikube.sh
+install_trivy.txt
+# Binaries
+minikube-linux-amd64
+
+# Sensitive local secrets and environment configs
+.env
+secrets/redis_password.txt
+secrets/secret_key.txt
