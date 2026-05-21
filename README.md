@@ -1,7 +1,7 @@
-Image Security Scanning
+# Image Security Scanning
 
 What is a CVE?
-CVE = Common Vulnerabilities and Exposures — a public database of known security flaws in software. Every vulnerability gets an ID like CVE-2024-12345 and a severity score:
+**CVE = Common Vulnerabilities and Exposures** — a public database of known security flaws in software. Every vulnerability gets an ID like CVE-2024-12345 and a severity score:
 
 ```
 CRITICAL   → Exploit exists, remote code execution possible
@@ -11,9 +11,9 @@ LOW        → Minimal impact
 NEGLIGIBLE → Theoretical, almost no real risk
 ```
 
-When you ship a Docker image, you're responsible for every CVE in every package inside it — even ones you didn't install directly.
+When you ship a **Docker image**, you're responsible for every CVE in every package inside it — even ones you didn't install directly.
 
-How Scanners Work
+## How Scanners Work
 Tools like Trivy work by:
 
 ```
