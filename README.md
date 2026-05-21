@@ -1,7 +1,9 @@
 # Image Security Scanning
 
 What is a CVE?
-**CVE = Common Vulnerabilities and Exposures** — a public database of known security flaws in software. Every vulnerability gets an ID like CVE-2024-12345 and a severity score:
+
+**CVE = Common Vulnerabilities and Exposures** — a public database of known security flaws in software. 
+Every vulnerability gets an ID like CVE-2024-12345 and a severity score:
 
 ```
 CRITICAL   → Exploit exists, remote code execution possible
@@ -27,9 +29,9 @@ Tools like Trivy work by:
    Your fastapi:v4 alpine image might have 5
 ```
 
-Step 1 — Install Trivy
+### Step 1 — Install Trivy
 
-Step 2 — Scan your images from Week 1
+### Step 2 — Scan your images from Week 1
 
 ```
 # Update vulnerability database first
@@ -42,7 +44,7 @@ trivy image fastapi:v3
 trivy image fastapi:v4
 ```
 
-Step 3 — Understand the output
+### Step 3 — Understand the output
 Trivy output looks like this:
 
 ```
@@ -66,7 +68,7 @@ Severity — how bad it is
 Installed Ver — what you have
 Fixed Ver — what you need to upgrade to
 
-Step 4 — Filter to what actually matters
+### Step 4 — Filter to what actually matters
 
 ```
 # Only show HIGH and CRITICAL — ignore noise
@@ -87,7 +89,7 @@ trivy image --severity HIGH,CRITICAL \
 
 --ignore-unfixed is key for CI pipelines — don't fail builds for vulnerabilities that have no fix yet.
 
-Step 5 — Scan beyond the image (filesystem, config)
+### Step 5 — Scan beyond the image (filesystem, config)
 
 ```
 # Scan your project filesystem for vulnerabilities in dependencies
@@ -111,7 +113,7 @@ No healthcheck defined
 Privileged containers
 Secrets in environment variables
 
-Step 6 — Generate a report
+### Step 6 — Generate a report
 
 ```
 # JSON report for CI/CD integration
@@ -136,7 +138,7 @@ trivy image --format table \
   fastapi:v3
 ```
 
-Step 7 — Fix vulnerabilities by updating base image
+### Step 7 — Fix vulnerabilities by updating base image
 The most common fix is simply using a newer base image:
 
 ```
@@ -158,7 +160,7 @@ trivy image --severity HIGH,CRITICAL fastapi:v3-updated
 
 Often just rebuilding with --no-cache pulls a fresh base image and eliminates many CVEs.
 
-Step 8 — Add scanning to your Compose workflow
+### Step 8 — Add scanning to your Compose workflow
 Create a scan script you run before every deployment:
 
 ```
@@ -187,7 +189,7 @@ cd ~/projects/url-shortener
 
 --exit-code 1 makes Trivy exit with failure if vulnerabilities are found — this is what blocks a CI pipeline.
 
-Step 9 — Docker Scout (built-in alternative)
+### Step 9 — Docker Scout (built-in alternative)
 
 ```
 # Docker Scout is built into newer Docker versions
@@ -200,7 +202,7 @@ docker scout quickview fastapi:v3
 docker scout compare fastapi:v1 fastapi:v3
 ```
 
-Step 10 — Scan a public image before pulling it
+### Step 10 — Scan a public image before pulling it
 
 ```
 # Always scan before using a new base image
@@ -212,5 +214,6 @@ trivy image --severity HIGH,CRITICAL redis:7-alpine
 trivy image --severity HIGH,CRITICAL python:3.11-slim \
   2>&1 | tail -5
 trivy image --severity HIGH,CRITICAL python:3.11-alpine \
+```
   2>&1 | tail -5
 ```
