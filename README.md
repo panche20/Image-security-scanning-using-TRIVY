@@ -31,6 +31,9 @@ Tools like Trivy work by:
 
 **First follow below steps & create folder as below:**
 ```
+Clone the repo:
+git clone https://github.com/panche20/Image-security-scanning-using-TRIVY
+
 mkdir -p secrets
 echo "strongpassword123" > secrets/redis_password.txt
 echo "my-super-secret-app-key-$(openssl rand -hex 16)" > secrets/secret_key.txt
