@@ -29,6 +29,13 @@ Tools like Trivy work by:
    Your fastapi:v4 alpine image might have 5
 ```
 
+**First follow below steps & create folder as below:**
+```
+mkdir -p secrets
+echo "strongpassword123" > secrets/redis_password.txt
+echo "my-super-secret-app-key-$(openssl rand -hex 16)" > secrets/secret_key.txt
+chmod 600 secrets/*.txt
+```
 ### Step 1 — Install Trivy
 
 ### Step 2 — Scan your images from Week 1
